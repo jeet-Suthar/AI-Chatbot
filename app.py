@@ -3,7 +3,7 @@ os.environ["GRPC_ENABLE_FORK_SUPPORT"] = "0"  # Fix gRPC shutdown warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logs
 import re
 import sqlite3
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template,jsonify
 from flask_cors import CORS 
 import google.generativeai as genai
 
