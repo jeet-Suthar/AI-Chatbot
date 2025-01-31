@@ -9,7 +9,6 @@ click==8.1.6
 colorama==0.4.6
 Flask
 Flask-CORS
-sqlite3
 requests
 gunicorn
 google.generativeai
