@@ -151,8 +151,8 @@ def extract_department_name(ai_query):
     match = re.search(r"Dept_Name\s*=\s*'([^']+)'", ai_query, re.IGNORECASE)
     return match.group(1) if match else None  # Returns department name or None
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)  # Change port 
+    app.run(debug=True)
+
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=10000)  # Change port 
