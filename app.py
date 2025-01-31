@@ -120,7 +120,7 @@ def process_query(user_input):
 
 @app.route("/")
 def home():
-    return "Flask server is running!"
+    return render_template("index.html")
 
 @app.route("/chat", methods=["POST"])
 def chat():
