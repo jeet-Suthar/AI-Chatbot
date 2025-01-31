@@ -143,8 +143,6 @@ const generateAPIResponse = async (incomingMessageDiv) => {
 // Show a loading animation while waiting for the API response
 const showLoadingAnimation = () => {
   const html = `<div class="message-content">
-                  <img src="{{ url_for('static', filename='static/images/Jeet-Suthar-pfp.jpg') }}" alt="Company Logo">
-
                   <img class="avatar" src="{{ url_for('static', filename='images/abstract-061-svgrepo-com(1).svg') }}" alt="Gemini avatar">
                   <p class="text"></p>
                   <div class="loading-indicator">
