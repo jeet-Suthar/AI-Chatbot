@@ -10,7 +10,7 @@ let userMessage = null;
 let isResponseGenerating = false; // for stopping any response between generating previous one
 
 // flask API url here we do backend thing
-const API_URL = `http://127.0.0.1:5000/chat`;
+const API_URL = `https://ai-chatbot-rraj.onrender.com/chat`;
 
 
 // Here i am using localStorage - built-in variable to store some values
@@ -143,7 +143,9 @@ const generateAPIResponse = async (incomingMessageDiv) => {
 // Show a loading animation while waiting for the API response
 const showLoadingAnimation = () => {
   const html = `<div class="message-content">
-                  <img class="avatar" src="images/abstract-061-svgrepo-com(1).svg" alt="Gemini avatar">
+                  <img src="{{ url_for('static', filename='images/Jeet-Suthar-pfp.jpg') }}" alt="Company Logo">
+
+                  <img class="avatar" src="{{ url_for('static', filename='images/abstract-061-svgrepo-com(1).svg') }}" alt="Gemini avatar">
                   <p class="text"></p>
                   <div class="loading-indicator">
                     <div class="loading-bar"></div>
@@ -169,7 +171,7 @@ const handleOutgoingChat = () => {
   isResponseGenerating = true;
 
   const html = `<div class="message-content">
-                  <img class="avatar" src="images/Jeet-Suthar-pfp.jpg" alt="User avatar">
+                  <img class="avatar" src="{{ url_for('static', filename='images/Jeet-Suthar-pfp.jpg') }}" alt="User avatar">
                   <p class="text"></p>
                 </div>`;
 
