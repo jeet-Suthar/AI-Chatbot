@@ -143,11 +143,11 @@ const generateAPIResponse = async (incomingMessageDiv) => {
 // Show a loading animation while waiting for the API response
 const showLoadingAnimation = () => {
   const html = `<div class="message-content">
-                  <img class="avatar" src="{{ url_for('static', filename='static/images/abstract-061-svgrepo-com(1).svg') }}" alt="Gemini avatar">
+                  <img class="avatar" src="https://ai-chatbot-rraj.onrender.com/static/images/abstract-061-svgrepo-com(1).svg" alt="Gemini avatar">
                   <p class="text"></p>
                   <div class="loading-indicator">
                     <div class="loading-bar"></div>
-                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div> 
                     <div class="loading-bar"></div>
                   </div>
                 </div>
@@ -169,7 +169,7 @@ const handleOutgoingChat = () => {
   isResponseGenerating = true;
 
   const html = `<div class="message-content">
-                  <img class="avatar" src="{{ url_for('static', filename='static/images/Jeet-Suthar-pfp.jpg') }}" alt="User avatar">
+                  <img class="avatar" src="https://ai-chatbot-rraj.onrender.com/static/images/Jeet-Suthar-pfp.jpg" alt="User avatar">
                   <p class="text"></p>
                 </div>`;
 
