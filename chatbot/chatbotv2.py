@@ -3,10 +3,12 @@ os.environ["GRPC_ENABLE_FORK_SUPPORT"] = "0"  # Fix gRPC shutdown warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logs
 import re
 import sqlite3
-import requests
-import json
+from flask import Flask, request, jsonify
+from flask_cors import CORS 
 import google.generativeai as genai
 
+app = Flask(__name__)
+CORS(app)
 
 # Hugging Face API Details
 # HUGGINGFACE_API_KEY = "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"
@@ -35,6 +37,7 @@ def generate_sql_query(user_input):
 
     data = {"inputs": f"{database_schema}\nUser Query: {user_input}"}
     model = genai.GenerativeModel("gemini-pro")  
+    print("user input is : ",user_input)
     response = model.generate_content(f"{database_schema}\nUser Query: {user_input}")  # ✅ Correct input
 
 
@@ -59,24 +62,36 @@ def process_query(user_input):
     try:
         cursor.execute(ai_query)
         results = cursor.fetchall()
-        response = results if results else "No data found."
+        if results:
+            response = [dict(zip([column[0] for column in cursor.description], row)) for row in results]
+        else:
+            response = "No data found."
     except Exception as e:
-        response = f"Error: {str(e)}"
+        response = f"Error: {str(e)}" 
 
     conn.close()
-    print( response)
+    return response
 
-# # API Route for the chatbot
-# @app.route("/chat", methods=["POST"])
-# def chat():
-#     data = request.get_json()
-#     user_input = data.get("message", "")
-#     response = process_query(user_input)
-#     return jsonify({"response": response})
+# API Route for the chatbot
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+@app.route("/")
+def home():
+    return "Flask server is running!"
 
-user_input = input("E:")
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    user_input = data.get("message", "")
+    response = process_query(user_input)
+    print(response)
+    return jsonify({"response": response})
+    # user_input = input("E:")
 
-process_query(user_input)
+    # process_query(user_input)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+# user_input = input("E:")
+
+# process_query(user_input)

@@ -14,6 +14,7 @@
   --primary-color: #242424;
   --secondary-color: #383838;
   --secondary-hover-color: #444;
+  --header-color: #0056b3; /* Dark blue */
 }
 .light_mode {
   /* Light mode colors */
@@ -23,6 +24,7 @@
   --primary-color: #FFF;
   --secondary-color: #E9EEF6;
   --secondary-hover-color: #DBE1EA;
+  --header-color: #3399ff; /* Light blue */
 }
 body {
   background: var(--primary-color);
@@ -299,4 +301,46 @@ body.hide-header .header {
     font-size: 0.75rem;
     margin-top: 0.5rem;
   }
+}
+
+/* talbe */
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: var(--secondary-color); /* ✅ Matches theme */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ✅ Adds depth */
+}
+
+/* Table Header */
+th {
+  background-color: var(--header-color); /* ✅ Uses theme variable */
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-size: 16px;
+  border-bottom: 2px solid var(--secondary-hover-color);
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ✅ Adds shadow */
+}
+
+/* Table Body */
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--secondary-hover-color);
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Alternate Row Colors */
+tr:nth-child(even) {
+  background: var(--secondary-hover-color);
+}
+
+/* Hover Effect */
+tr:hover {
+  background: var(--secondary-color);
 }
