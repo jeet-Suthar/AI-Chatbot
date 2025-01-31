@@ -3,7 +3,7 @@ os.environ["GRPC_ENABLE_FORK_SUPPORT"] = "0"  # Fix gRPC shutdown warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logs
 import re
 import sqlite3
-from flask import Flask, request, jsonify,render_template
+from flask import Flask, request, jsonify
 from flask_cors import CORS 
 import google.generativeai as genai
 
@@ -120,7 +120,7 @@ def process_query(user_input):
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return "Flask server is running!"
 
 @app.route("/chat", methods=["POST"])
 def chat():
