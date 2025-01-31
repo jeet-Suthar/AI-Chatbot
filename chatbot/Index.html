@@ -1,57 +1,95 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayane Chatbot</title>
-  <!-- Linking Google Fonts For Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="header">
-    <!-- Header Greetings -->
-     <div class="top-section">
-         <p class="subtitle">I am <span class="fancy-color">Ayane Shirakawa</span></p>
-    <p class="subtitle-small">How can I help you?</p>
-     </div>
-   
-    <!-- Suggestion list -->
-    <ul class="suggestion-list">
-      <li class="suggestion">
-        <h4 class="text">Show the total number of employees..</h4>
-      </li>
-      <li class="suggestion">
-        <h4 class="text">List all departments in the company?</h4>
-      </li>
-      <li class="suggestion">
-        <h4 class="text">Can you help me find list of employees sorted by salary (highest to lowest)?</h4>
-      </li>
-      <li class="suggestion">
-        <h4 class="text">which department is most expensive?</h4>
-      </li>
-      
-    </ul>
-  </header>
-  <!-- Chat List / Container -->
-  <div class="chat-list"></div>
-  <!-- Typing Area -->
-  <div class="typing-area">
-    <form action="#" class="typing-form">
-      <div class="input-wrapper">
-        <input type="text" placeholder="Enter a prompt here" class="typing-input" required />
-        <button id="send-message-button" class="icon material-symbols-rounded">send</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayane shirakawa</title>
+    <!-- Linking Google Fonts For Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <!-- Header Greetings -->
+      <div class="top-section">
+        <p class="subtitle">
+          I am <span class="fancy-color">Ayane!</span>
+        </p>
+        <p class="subtitle-small">How can I help you?</p>
       </div>
-      <div class="action-buttons">
-        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
-        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
-      </div>
-    </form>
-    <p class="disclaimer-text">
-        This AI chatbot only answers queries based on company database records. Unexpected responses? Double-check your input!
-    </p>
-  </div>
-  <script src="script.js"></script>
-</body>
+
+      <!-- Suggestion list -->
+      <ul class="suggestion-list">
+        <li class="suggestion">
+          <h4 class="text">Show the total number of employees..</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">List all departments in the company?</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">
+            Can you help me find list of employees sorted by salary (highest to
+            lowest)?
+          </h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">which department is most expensive?</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">who is most paid employee in the company?</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">List all managers which there location</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">What is the total salary expense for the marketing department?</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">Show me all employees in the Finance  department.</h4>
+        </li>
+        <li class="suggestion">
+          <h4 class="text">List all employees hired after january of 2020</h4>
+        </li>
+      </ul>
+      <p class="scroll-subtitle">Scroll through all demo prompts -></p>
+    </header>
+    <!-- Chat List / Container -->
+    <div class="chat-list"></div>
+    <!-- Typing Area -->
+    <div class="typing-area">
+      <form action="#" class="typing-form">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            placeholder="Enter a prompt here"
+            class="typing-input"
+            required
+          />
+          <button
+            id="send-message-button"
+            class="icon material-symbols-rounded"
+          >
+            send
+          </button>
+        </div>
+        <div class="action-buttons">
+          <span id="theme-toggle-button" class="icon material-symbols-rounded"
+            >light_mode</span
+          >
+          <span id="delete-chat-button" class="icon material-symbols-rounded"
+            >delete</span
+          >
+        </div>
+      </form>
+      <p class="disclaimer-text">
+        This AI chatbot only answers queries based on company database records.
+        Unexpected responses? Double-check your input!
+      </p>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

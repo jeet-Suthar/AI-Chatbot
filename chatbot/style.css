@@ -1,11 +1,13 @@
 /* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 :root {
   /* Dark mode colors */
   --text-color: #E3E3E3;
@@ -14,8 +16,10 @@
   --primary-color: #242424;
   --secondary-color: #383838;
   --secondary-hover-color: #444;
-  --header-color: #0056b3; /* Dark blue */
+  --header-color: #0056b3;
+  /* Dark blue */
 }
+
 .light_mode {
   /* Light mode colors */
   --text-color: #222;
@@ -24,21 +28,28 @@
   --primary-color: #FFF;
   --secondary-color: #E9EEF6;
   --secondary-hover-color: #DBE1EA;
-  --header-color: #3399ff; /* Light blue */
+  --header-color: #3399ff;
+  /* Light blue */
 }
+
 body {
   background: var(--primary-color);
 }
-.header, .chat-list .message, .typing-form {
+
+.header,
+.chat-list .message,
+.typing-form {
   margin: 0 auto;
   max-width: 980px;
 }
+
 .header {
   text-align: center;
   margin-top: 6vh;
   padding: 1rem;
   overflow-x: hidden;
 }
+
 body.hide-header .header {
   margin: 0;
   display: none;
@@ -49,24 +60,33 @@ body.hide-header .header {
   font-weight: 500;
   line-height: 4rem;
 }
+
 .header .title {
   width: fit-content;
   font-size: 2.4rem;
   color: var(--subheading-color);
- 
+
 }
-.header .fancy-color{
+
+.header .fancy-color {
   background-clip: text;
   background: linear-gradient(to right, #f573f2, #fb8043);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .header .subtitle {
   font-size: 2.6rem;
   color: var(--subheading-color);
 }
-.subtitle-small{
+
+.subtitle-small {
   font-size: 2rem;
+  color: var(--subheading-color);
+}
+.scroll-subtitle{
+  padding: 10px 0;
+  font-size: 1rem;
   color: var(--subheading-color);
 }
 .suggestion-list {
@@ -80,6 +100,7 @@ body.hide-header .header {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
+
 .suggestion-list .suggestion {
   cursor: pointer;
   padding: 1.25rem;
@@ -93,13 +114,16 @@ body.hide-header .header {
   background: var(--secondary-color);
   transition: 0.2s ease;
 }
+
 .suggestion-list .suggestion:hover {
   background: var(--secondary-hover-color);
 }
+
 .suggestion-list .suggestion :where(.text, .icon) {
   font-weight: 400;
   color: var(--text-color);
 }
+
 .suggestion-list .suggestion .icon {
   width: 42px;
   height: 42px;
@@ -113,31 +137,38 @@ body.hide-header .header {
   color: var(--text-color);
   background: var(--primary-color);
 }
+
 .chat-list {
   padding: 2rem 1rem 12rem;
   max-height: 100vh;
   overflow-y: auto;
   scrollbar-color: #999 transparent;
 }
+
 .chat-list .message.incoming {
   margin-top: 1.5rem;
 }
+
 .chat-list .message .message-content {
   display: flex;
   gap: 1.5rem;
   width: 100%;
   align-items: center;
 }
+
 .chat-list .message .text {
   color: var(--text-color);
   white-space: pre-wrap;
 }
+
 .chat-list .message.error .text {
   color: #e55865;
 }
+
 .chat-list .message.loading .text {
   display: none;
 }
+
 .chat-list .message .avatar {
   width: 40px;
   height: 40px;
@@ -145,14 +176,17 @@ body.hide-header .header {
   border-radius: 50%;
   align-self: flex-start;
 }
+
 .chat-list .message.loading .avatar {
   animation: rotate 3s linear infinite;
 }
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
+
 .chat-list .message .icon {
   color: var(--text-color);
   cursor: pointer;
@@ -167,43 +201,53 @@ body.hide-header .header {
   margin-left: 3.5rem;
   visibility: hidden;
 }
+
 .chat-list .message .icon.hide {
   visibility: hidden;
 }
-.chat-list .message:not(.loading, .error):hover .icon:not(.hide){
+
+.chat-list .message:not(.loading, .error):hover .icon:not(.hide) {
   visibility: visible;
 }
+
 .chat-list .message .icon:hover {
   background: var(--secondary-hover-color);
 }
+
 .chat-list .message .loading-indicator {
   display: none;
   gap: 0.8rem;
   width: 100%;
   flex-direction: column;
 }
+
 .chat-list .message.loading .loading-indicator {
   display: flex;
 }
+
 .chat-list .message .loading-indicator .loading-bar {
   height: 11px;
   width: 100%;
   border-radius: 0.135rem;
   background-position: -800px 0;
-  background: linear-gradient(to right, #4285f4, var(--primary-color), #4285f4);
+  background: linear-gradient(to right, #e463e2, var(--primary-color), #d18930);
   animation: loading 3s linear infinite;
 }
+
 .chat-list .message .loading-indicator .loading-bar:last-child {
   width: 70%;
 }
+
 @keyframes loading {
   0% {
     background-position: -800px 0;
   }
+
   100% {
     background-position: 800px 0;
   }
 }
+
 .typing-area {
   position: fixed;
   width: 100%;
@@ -212,16 +256,19 @@ body.hide-header .header {
   padding: 1rem;
   background: var(--primary-color);
 }
+
 .typing-area :where(.typing-form, .action-buttons) {
   display: flex;
   gap: 0.75rem;
 }
+
 .typing-form .input-wrapper {
   width: 100%;
   height: 56px;
   display: flex;
   position: relative;
 }
+
 .typing-form .typing-input {
   height: 100%;
   width: 100%;
@@ -234,12 +281,15 @@ body.hide-header .header {
   border-radius: 100px;
   background: var(--secondary-color);
 }
+
 .typing-form .typing-input:focus {
   background: var(--secondary-hover-color);
 }
+
 .typing-form .typing-input::placeholder {
   color: var(--placeholder-color);
 }
+
 .typing-area .icon {
   width: 56px;
   height: 56px;
@@ -254,9 +304,11 @@ body.hide-header .header {
   background: var(--secondary-color);
   transition: 0.2s ease;
 }
+
 .typing-area .icon:hover {
   background: var(--secondary-hover-color);
 }
+
 .typing-form #send-message-button {
   position: absolute;
   right: 0;
@@ -266,37 +318,46 @@ body.hide-header .header {
   background: transparent;
   transition: transform 0.2s ease;
 }
-.typing-form .typing-input:valid ~ #send-message-button {
+
+.typing-form .typing-input:valid~#send-message-button {
   transform: scale(1);
 }
+
 .typing-area .disclaimer-text {
   text-align: center;
   font-size: 0.85rem;
   margin-top: 1rem;
   color: var(--placeholder-color);
 }
+
 /* Responsive media query code for small screen */
 @media (max-width: 768px) {
   .header :is(.title, .subtitle) {
     font-size: 2rem;
     line-height: 2.6rem;
   }
+
   .header .subtitle {
     font-size: 1.7rem;
   }
+
   .typing-area :where(.typing-form, .action-buttons) {
     gap: 0.4rem;
   }
+
   .typing-form .input-wrapper {
     height: 50px;
   }
+
   .typing-form .typing-input {
     padding: 1.1rem 3.5rem 1.1rem 1.2rem;
   }
+
   .typing-area .icon {
     height: 50px;
     width: 50px;
   }
+
   .typing-area .disclaimer-text {
     font-size: 0.75rem;
     margin-top: 0.5rem;
@@ -309,22 +370,26 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  background: var(--secondary-color); /* ✅ Matches theme */
+  background: var(--secondary-color);
+  /* ✅ Matches theme */
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ✅ Adds depth */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* ✅ Adds depth */
 }
 
 /* Table Header */
 th {
-  background-color: var(--header-color); /* ✅ Uses theme variable */
+  background-color: var(--header-color);
+  /* ✅ Uses theme variable */
   color: white;
   text-align: left;
   padding: 12px;
   font-size: 16px;
   border-bottom: 2px solid var(--secondary-hover-color);
   text-transform: uppercase;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ✅ Adds shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* ✅ Adds shadow */
 }
 
 /* Table Body */
