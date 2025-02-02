@@ -136,6 +136,7 @@ def process_query(user_input,model_name):
                 response = {"type": "text", "data": "No data found."}
         except Exception as e:
             print("yaha bhi chud gye guru")
+            print("\n\n-----critical error-----\n\n error is : ",str(e))
             response =  {"type": "text", "data": "Oops! We f*cked up...try again later. :)"}
             # response = {"type": "text", "data": f"Error: {str(e)}"}
 
