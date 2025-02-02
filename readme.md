@@ -32,7 +32,12 @@ This project accepts Natural Languague prompts from user and convert them into S
 - Frameworks: Flask, FastAPI, pyTorch
 - Database: SQLite
 - Tools: Docker, Render, HuggingFace, GitHub 
+---
+Screenshot:
 
+![Demo Screenshot](https://github.com/jeet-Suthar/AI-Chatbot/blob/main/root/static/images/Screenshot%20from%202025-02-02%2018-18-33.png)
+--- 
+Preview:
 
 ![Demo video](https://github.com/jeet-Suthar/AI-Chatbot/blob/main/root/static/images/Screencast%20from%202025-02-02%2018-19-08(1).gif)
 ---
