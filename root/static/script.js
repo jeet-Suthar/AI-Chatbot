@@ -10,7 +10,7 @@ let userMessage = null;
 let isResponseGenerating = false; // for stopping any response between generating previous one
 
 // flask API url here we do backend thing
-const API_URL = `https://ai-chatbot-rraj.onrender.com/chat`;
+const API_URL = `http://127.0.0.1:5000/chat`;
 
 
 // Here i am using localStorage - built-in variable to store some values
