@@ -1,10 +1,10 @@
-# AI-Chatbot SQLite 🔥
+# AI-Chatbot SQLite 
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)]()
 
 
-Powered by DeepSeek and Gemini API
+Powered by **DeepSeek** and **Gemini API**
 
 ---
 
@@ -34,7 +34,7 @@ This project accepts Natural Languague prompts from user and convert them into S
 - Tools: Docker, Render, HuggingFace, GitHub 
 
 
-![Demo video](<static/images/Screencast from 2025-02-02 18-19-08.gif>)
+![Demo video](<root/static/images/Screencast from 2025-02-02 18-19-08.gif>)
 
 ---
 ## 💼 Working
