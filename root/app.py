@@ -7,8 +7,10 @@ import requests
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS 
 import google.generativeai as genai
+from werkzeug.serving import WSGIRequestHandler
 
 app = Flask(__name__)
+WSGIRequestHandler.timeout = 300 # will increase timeout to 5 minutes
 CORS(app) # cross origin resource sharing function
 
 
