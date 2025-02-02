@@ -35,7 +35,7 @@ This project accepts Natural Languague prompts from user and convert them into S
 
 
 ![Demo video](</root/static/images/Screencast from 2025-02-02 18-19-08.gif>)
-
+![Demo video](https://raw.githubusercontent.com/USERNAME/REPO/main/static/images/Screencast%20from%202025-02-02%2018-19-08(1).gif)
 ---
 ## 💼 Working
 ---
