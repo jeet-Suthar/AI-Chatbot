@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ayane shirakawa</title>
+    <title>Ayane Shirakawa</title>
     <!-- Linking Google Fonts For Icons -->
     <link
       rel="stylesheet"
@@ -14,7 +13,6 @@
   </head>
   <body>
     <header class="header">
-      <!-- Header Greetings -->
       <div class="top-section">
         <p class="subtitle">
           I am <span class="fancy-color">Ayane!</span>
@@ -22,8 +20,8 @@
         <p class="subtitle-small">How can I help you?</p>
       </div>
 
-      <!-- Suggestion list -->
-      <ul class="suggestion-list">
+       <!-- Suggestion list -->
+       <ul class="suggestion-list">
         <li class="suggestion">
           <h4 class="text">Show the total number of employees..</h4>
         </li>
@@ -37,28 +35,32 @@
           </h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">which department is most expensive?</h4>
+          <h4 class="text">Which department is most expensive?</h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">who is most paid employee in the company?</h4>
+          <h4 class="text">Who is the most paid employee in the company?</h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">List all managers which there location</h4>
+          <h4 class="text">List all managers with their location.</h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">What is the total salary expense for the marketing department?</h4>
+          <h4 class="text">
+            What is the total salary expense for the marketing department?
+          </h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">Show me all employees in the Finance  department.</h4>
+          <h4 class="text">Show me all employees in the Finance department.</h4>
         </li>
         <li class="suggestion">
-          <h4 class="text">List all employees hired after january of 2020</h4>
+          <h4 class="text">List all employees hired after January of 2020.</h4>
         </li>
       </ul>
       <p class="scroll-subtitle">Scroll through all demo prompts -></p>
     </header>
+
     <!-- Chat List / Container -->
     <div class="chat-list"></div>
+
     <!-- Typing Area -->
     <div class="typing-area">
       <form action="#" class="typing-form">
@@ -76,6 +78,14 @@
             send
           </button>
         </div>
+
+        <!-- Model Toggle Button -->
+        <div class="model-selection">
+          <button id="model-toggle-btn" class="model-toggle">
+            <img src="/static/images/gemini.svg" id="model-icon" alt="Gemini" />
+          </button>
+        </div>
+
         <div class="action-buttons">
           <span id="theme-toggle-button" class="icon material-symbols-rounded"
             >light_mode</span
@@ -90,6 +100,7 @@
         Unexpected responses? Double-check your input!
       </p>
     </div>
+
     <script src="/static/script.js"></script>
   </body>
 </html>

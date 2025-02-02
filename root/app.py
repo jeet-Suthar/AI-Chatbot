@@ -3,16 +3,14 @@ os.environ["GRPC_ENABLE_FORK_SUPPORT"] = "0"  # Fix gRPC shutdown warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow logs
 import re
 import sqlite3
+import requests
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS 
 import google.generativeai as genai
 
 app = Flask(__name__)
-CORS(app)
+CORS(app) # cross origin resource sharing function
 
-# Hugging Face API Details
-# HUGGINGFACE_API_KEY = "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"
-# MODEL_NAME = "deepseek-ai/DeepSeek-R1"  # Smaller model that works for SQL
 
 # Set up Gemini API Key
 genai.configure(api_key="AIzaSyCC6iznCyPjfZjRHlxDjPOwthyDaIQNFcY")
@@ -23,7 +21,7 @@ def connect_db():
     return sqlite3.connect("company.db")
 
 # Function to get SQL Query from Hugging Face API
-def generate_ai_response(user_input):
+def generate_ai_response(user_input,model_name):
     # API_URL = f"https://api-inference.huggingface.co/models/{MODEL_NAME}"
     # headers = {"Authorization": f"Bearer {HUGGINGFACE_API_KEY}"}
     
@@ -54,10 +52,37 @@ def generate_ai_response(user_input):
     - Query which are not related to sql should be answered in text format precedding with *
     """
 
-    data = {"inputs": f"{database_schema}\nUser Query: {user_input}"}
-    model = genai.GenerativeModel("gemini-pro")  
+    data = {"inputs": f"{database_schema}\n User Query: {user_input}"}
     print("user input is : ",user_input)
-    response = model.generate_content(f"{database_schema}\nUser Query: {user_input}")  # ✅ Correct input
+    
+    
+    # model selection will be performed here...let
+    print("\n\nDATA GIVEN TO AI :", data, "\n\nData type : ", type(data))
+    
+    if(model_name == "Gemini"):
+        
+        print("\n\n ab GEMINI answer deg\n\na")
+    
+        model = genai.GenerativeModel("gemini-pro")  
+        response = model.generate_content(f"{database_schema}\nUser Query: {user_input}")  # ✅ Correct input
+
+    else:
+        
+        print("\n\n ab OpenAI ka rival...DeepSeek answer dega\n\n")
+        
+        HF_API_URL = "https://jeetsuthar-test5.hf.space/chat" # link to my hugging face docker API where i uploaded deepseek model and build FastAPI application
+        headers = {"Content-Type": "application/json"}
+        msg = {"message": f"{database_schema}\nUser Query: {user_input}"}
+        response = requests.post(HF_API_URL, json=msg, headers=headers)
+        
+        print("\n\n --------------Resonse from deepseek-----------\n\n", response.text) # dedugging ke hetu istmal kiya gya 
+
+        if response.ok: 
+            
+            return response.json()  # Return response data
+        else:
+            return {"error": "Failed to get response from Hugging Face API"}
+
 
 
     if not response.text:
@@ -65,8 +90,6 @@ def generate_ai_response(user_input):
     ai_response = response.text.strip()  
 
     #  Remove unwanted Markdown formatting (```sql and ```)
-    print(ai_response)
-    
     
     ai_response = re.sub(r"```sql|```", "", ai_response).strip()
 
@@ -78,22 +101,27 @@ def generate_ai_response(user_input):
 
 
 # Process user queries
-def process_query(user_input):
+def process_query(user_input,model_name):
     conn = connect_db()
     cursor = conn.cursor()
 
-    ai_query = generate_ai_response(user_input)  # AI generates SQL
+    ai_query = generate_ai_response(user_input,model_name)  # AI generates SQL
     print("Output of AI: ",ai_query)
     
+    # check if model is deepseek then it will just return response  
+    if(model_name == "DeepSeek"):
+        return {"type": "text", "data": ai_query["response"]}
+        
+    # ye RegeX ka use karke dept name extract karega query se    
     dept_name = extract_department_name(ai_query)
+    
+    # ye normal text response ke hetu hai !!
     if ai_query.startswith("*"):
         response = {"type": "text", "data": ai_query.lstrip("*").strip()}  # Remove * and extra spaces
         
+    # nimanlikhit 2 lines department ke valid naam check karne hetu hai !!!
     elif dept_name and not is_valid_department(dept_name):
         response =  {"type": "text", "data": "Invalid department name. No matching data found."}
-        
-    # elif ai_query.startswith("Error: "):
-    #     response =  {"type": "text", "data": "Oops! We f*cked up...try again later."}
         
     else:
         try:
@@ -101,8 +129,8 @@ def process_query(user_input):
             results = cursor.fetchall()
             if results:
                 response = {
-                    "type": "table",  # Indicate it's tabular data
-                    "data": [dict(zip([column[0] for column in cursor.description], row)) for row in results]
+                    "type": "table",  # is se table banega frontend pe
+                    "data": [dict(zip([column[0] for column in cursor.description], row)) for row in results] # process dict
                 }
             else:
                 response = {"type": "text", "data": "No data found."}
@@ -125,9 +153,18 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
-    user_input = data.get("message", "")
-    response = process_query(user_input)
-    print(response)
+    print("This is whole json receeived : ", data)
+    user_input = data.get("message", "") # isme user prompt hai
+    model_name = data.get("model","") # isme model ka naam hai 
+    
+    
+    print("THIS IS RAW MSG : ",user_input)
+    
+    # ab sabse mushkil part...choosing gemini and deepseek model when user says
+    # aur uska sahi se answer dena
+    
+    
+    response = process_query(user_input,model_name)
     return jsonify({"response": response})
     # user_input = input("E:")
 
@@ -139,11 +176,12 @@ def is_valid_department(dept_name):
     cursor = conn.cursor()
     print("dpt name striped ", dept_name)
     cursor.execute("SELECT COUNT(*) FROM Departments WHERE Dept_Name = ?", (dept_name,))
-    result = cursor.fetchone()[0]  # Get count
+    result = cursor.fetchone()[0]  # count milega isse
     
     conn.close()
     print("department name here :", result)
-    return result > 0  # Returns True if department exists, False otherwise
+    return result > 0  
+
 
 # this will use regex expresssion to get out department name
 def extract_department_name(ai_query):

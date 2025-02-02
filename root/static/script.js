@@ -10,7 +10,7 @@ let userMessage = null;
 let isResponseGenerating = false; // for stopping any response between generating previous one
 
 // flask API url here we do backend thing
-const API_URL = `https://ai-chatbot-rraj.onrender.com/chat`;
+const API_URL = `http://127.0.0.1:5000/chat`;
 
 
 // Here i am using localStorage - built-in variable to store some values
@@ -119,6 +119,7 @@ const generateAPIResponse = async (incomingMessageDiv) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         message: userMessage,
+        model: selectedModel
       }),
     });
 
@@ -218,4 +219,33 @@ typingForm.addEventListener("submit", (e) => {
   e.preventDefault();
   handleOutgoingChat();
 });
+
+let selectedModel = "Gemini"; // Default model is Gemini
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modelToggleBtn = document.getElementById("model-toggle-btn");
+  const modelText = document.getElementById("model-text");
+  const modelIcon = document.getElementById("model-icon");
+
+
+  modelToggleBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    if (selectedModel === "Gemini") {
+      // Switch to DeepSeek
+      modelIcon.src = "/static/images/deepseek-color.svg";
+      modelIcon.alt = "DeepSeek";
+      selectedModel = "DeepSeek";
+    } else {
+      // Switch to Gemini
+      modelIcon.src = "/static/images/gemini.svg";
+      modelIcon.alt = "Gemini";
+      selectedModel = "Gemini";
+    }
+
+    console.log("Selected Model:", selectedModel); // Debugging: Check selected model
+  })
+})
+
+
 loadDataFromLocalstorage();

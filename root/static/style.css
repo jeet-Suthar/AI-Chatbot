@@ -409,3 +409,38 @@ tr:nth-child(even) {
 tr:hover {
   background: var(--secondary-color);
 }
+.model-selection {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.model-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+/* Toggle Button */
+.model-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary-color);
+  color: var(--background-light);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.model-toggle img {
+  width: 20px;
+  height: 20px;
+}
+
+.model-toggle:hover {
+  background: var(--secondary-color);
+}
