@@ -34,7 +34,7 @@ This project accepts Natural Languague prompts from user and convert them into S
 - Tools: Docker, Render, HuggingFace, GitHub 
 
 
-![Demo video](<root/static/images/Screencast from 2025-02-02 18-19-08.gif>)
+![Demo video](</root/static/images/Screencast from 2025-02-02 18-19-08.gif>)
 
 ---
 ## 💼 Working
