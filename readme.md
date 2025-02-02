@@ -34,7 +34,7 @@ This project accepts Natural Languague prompts from user and convert them into S
 - Tools: Docker, Render, HuggingFace, GitHub 
 
 
-![Demo video]([https://raw.githubusercontent.com/USERNAME/REPO/main/static/images/Screencast%20from%202025-02-02%2018-19-08.gif](https://github.com/jeet-Suthar/AI-Chatbot/blob/main/root/static/images/Screencast%20from%202025-02-02%2018-19-08(1).gif))
+![Demo video](https://github.com/jeet-Suthar/AI-Chatbot/blob/main/root/static/images/Screencast%20from%202025-02-02%2018-19-08(1).gif)
 ---
 ## 💼 Working
 ---
