@@ -97,6 +97,7 @@ Following step will cover installation of Flask App
 2. There will be on **app.py** file, Run it. It will donwload model about 3-4Gb on your local system. 
 3. All Done! 
 
+*URL of huggingFace space* =  https://huggingface.co/spaces/JeetSuthar/test5
 ---
 ## 🚧 Limitation
 
@@ -113,7 +114,7 @@ As this model is totally build on free services it have hell of limitations.
 ---
 ## 📈 Improvement
 
-If I got access to paid services and little bit more time then thing is improved
+If I got access to paid services and little bit more time then thing can be improved are...
 1. Response time
 2. trained custom AI model on large dataset
 3. Made UI more better then now
