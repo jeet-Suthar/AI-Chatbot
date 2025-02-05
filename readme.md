@@ -84,7 +84,12 @@ Following step will cover installation of Flask App
     ```bash
         pip install -r requirements.txt
     ```
-
+3. Create databases
+   
+   3.1 run dvscript.py file
+   
+   3.2 run update_manager.py file (choose managers from database manually)
+   
 3. Run app.py
     ```bash
     python3 app.py
